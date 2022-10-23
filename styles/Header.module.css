@@ -11,9 +11,21 @@
 }
 
 .title {
-  margin: 8px;
+  margin: 7px;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 8vw;
+}
+
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: 10vw;
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .title {
+    font-size: 12vw;
+  }
 }
 
 .title,

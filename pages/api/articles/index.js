@@ -1,6 +1,7 @@
 import Airtable from 'airtable';
 
-const base = new Airtable({apiKey: 'keyoouBn1N5Bhf3rI'}).base('appvb64iqCOaASqZj');
+export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
+
 
 export default function handler(req, res) {
   base('code')
@@ -12,3 +13,4 @@ export default function handler(req, res) {
         res.status(200).json(records)
     })
 }
+

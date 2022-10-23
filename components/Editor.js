@@ -4,33 +4,29 @@ import Editor from 'react-simple-code-editor'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
 
-const exampleCode = `
-(function someDemo() {
-  var test = "Hello World!";
-  console.log(test);
-})();
-
-return () => <App />;
-`
 
 const styles = {
   root: {
     height: '50vh',
-    width: '60vw',
+    width: '70vw',
     boxSizing: 'border-box',
+    borderRadius: "10px",
     fontFamily: '"Dank Mono", "Fira Code", monospace',
     ...theme.plain
   }
 }
 
-class EditorExample extends Component {
-  state = { code: exampleCode }
+class EditorRendered extends Component {
+  state = { code: this.props.articles[3].fields.details}
 
   onValueChange = code => {
     this.setState({ code })
-    console.log(code)
+    
   }
-  
+  componentDidUpdate() {
+    this.props.setCodeValue(this.state.code)
+  }
+
   highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -57,4 +53,4 @@ class EditorExample extends Component {
     )
   }
 }
-export default EditorExample
+export default EditorRendered
