@@ -66,7 +66,7 @@ export default function Create({ articles }) {
            <textarea className={createStyles.input} type="text" cols="40" id="title" value={form.title}></textarea>
         </div>
         <div className={createStyles.descriptionDiv}>
-           <label className={createStyles.label} for="description" >description:</label>
+           <label className={createStyles.label} for="description" >code description:</label>
            <textarea className={createStyles.description} type="text" rows="4" id="description" value={form.description}></textarea>
         </div>
       </form>
