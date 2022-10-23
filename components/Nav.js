@@ -5,19 +5,23 @@ import next from 'next'
 
 const Nav = () => {
   return (
+    <>
     <nav className={navStyles.nav}>
+      <h1 className={navStyles.logo}>cS</h1>
       <ul>
         <li>
           <Link href='/'>Home</Link>
         </li>
         <li>
-          <Link href='/snippets'>Snippets</Link>
+          <Link href='/create'>Create</Link>
         </li>
         <li>
-          <Link href='/create'>Create</Link>
+          <Link href='/snippets'>Snippets</Link>
         </li>
       </ul>
     </nav>
+    
+    </>
   )
 }
 
