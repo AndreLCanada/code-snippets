@@ -5,10 +5,12 @@ const Header = () => {
   const x = 3
   return (
     <div>
+    <p className={headerStyles.description} > type. save. search.</p>
       <h1 className={headerStyles.title}>
-        <span>Test</span> Header
+        codeSnippets
       </h1>
-      <p className={headerStyles.description} > Test Subheader</p>
+      
+      <p className={headerStyles.description} > every line you need, all-in-one place</p>
       <style jsx>
         {`
           .title {
