@@ -16,10 +16,16 @@ const styles = {
   }
 }
 
-class EditorRenderedHome extends Component {
-  state = { code: this.props.articles[0].fields.details};
+class EditorRenderedSnippets extends Component {
+  state = { code: this.props.articles[0].fields.details}
 
- 
+  onValueChange = code => {
+    this.setState({ code })
+    
+  }
+/*   componentDidUpdate() {
+    this.props.setCodeValue(this.state.code)
+  } */
 
   highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
@@ -47,4 +53,4 @@ class EditorRenderedHome extends Component {
     )
   }
 }
-export default EditorRenderedHome
+export default EditorRenderedSnippets
