@@ -13,10 +13,11 @@ export default function Create({ articles }) {
 
   const form = useRef(null);
   const [codeValue, setCodeValue] = useState();
+  const [toggle, setToggle] = useState();
 
     const handleSubmit = () => {
    
-
+      // Save Code Snippet
       base('code').create([
         {
           "fields": {
@@ -38,7 +39,11 @@ export default function Create({ articles }) {
         });
       });
 
-    }
+     // trigger Success Message -> setTimeout for 5 seconds -> hide Success Message -> reload page
+      setToggle(true);
+      setTimeout(() => {}, 7000);
+      window.location.reload();
+    };
 
     const handleDiscard = () => {
       window.location.reload();
@@ -48,6 +53,7 @@ export default function Create({ articles }) {
       form.details = codeValue
     }, [codeValue])
 
+    useEffect(() => {}, [toggle])
    return (
     <div >
     <Head>
@@ -58,7 +64,7 @@ export default function Create({ articles }) {
     <form className={createStyles.form} ref={form}>
         <div className={createStyles.titleDiv}>
            <label className={createStyles.label} for="title">snippet name:</label>
-           <textarea className={createStyles.input} type="text" rows="4" id="title" value={form.title}></textarea>
+           <textarea className={createStyles.input} type="text" rows="2" id="title" value={form.title}></textarea>
         </div>
         <div className={createStyles.descriptionDiv}>
            <label className={createStyles.label} for="description" >code description:</label>
@@ -72,6 +78,7 @@ export default function Create({ articles }) {
       <button className={createStyles.button} type="button" onClick={handleSubmit}>Save</button>
       <button className={createStyles.button} type="button" onClick={handleDiscard}>Discard</button>
     </div> 
+    { toggle ? <div className={createStyles.success}>Snippet Saved!</div> : null} 
   </div>
 </div>);
 };
