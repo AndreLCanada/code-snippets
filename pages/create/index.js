@@ -41,8 +41,7 @@ export default function Create({ articles }) {
 
      // trigger Success Message -> setTimeout for 5 seconds -> hide Success Message -> reload page
       setToggle(true);
-      setTimeout(() => {}, 7000);
-      window.location.reload();
+      setTimeout(() => {window.location.reload();}, 3000);
     };
 
     const handleDiscard = () => {
