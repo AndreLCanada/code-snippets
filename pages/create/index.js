@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { server } from '../../config'
 import ArticleList from '../../components/ArticleList';
 import Airtable from 'airtable';
-import EditorRendered from '../../components/Editor';
+import EditorRendered from './components/Editor';
 import createStyles from '../../styles/Create.module.css';
 import { base } from '../api/articles';
 
@@ -63,7 +63,7 @@ export default function Create({ articles }) {
     <form className={createStyles.form} ref={form}>
         <div className={createStyles.titleDiv}>
            <label className={createStyles.label} for="title">snippet name:</label>
-           <textarea className={createStyles.input} type="text" cols="40" id="title" value={form.title}></textarea>
+           <textarea className={createStyles.input} type="text" rows="4" id="title" value={form.title}></textarea>
         </div>
         <div className={createStyles.descriptionDiv}>
            <label className={createStyles.label} for="description" >code description:</label>
@@ -71,7 +71,7 @@ export default function Create({ articles }) {
         </div>
       </form>
      <div className={createStyles.editor}>
-       <EditorRendered articles={articles} setCodeValue={setCodeValue} />
+       <EditorRendered articles={articles} />
     </div>
     <div className={createStyles.buttons}>
       <button className={createStyles.button} type="button" onClick={handleSubmit}>Save</button>

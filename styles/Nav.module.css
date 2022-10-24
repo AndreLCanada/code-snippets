@@ -1,12 +1,19 @@
 .nav {
   height: 50px;
   padding: 10px;
+  margin-bottom: -2vh;
   background: #000;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
+
+/* @media screen and (max-width: 612px) {
+  .nav {
+    margin-bottom: -14vh;
+  }
+} */
 
 .nav ul {
   display: flex;
@@ -25,7 +32,7 @@
   padding-left: 2vw;
   font-size: 1.8rem;
   -webkit-animation: flip-horizontal-top 2s alternate-reverse cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
-	        animation: flip-horizontal-top 2s alternate-reverse cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+	        animation: flip-horizontal-top 4s alternate-reverse cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
 }
 
 /* ----------------------------------------------

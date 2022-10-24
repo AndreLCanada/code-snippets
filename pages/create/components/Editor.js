@@ -7,8 +7,8 @@ import theme from 'prism-react-renderer/themes/nightOwl'
 
 const styles = {
   root: {
-    height: '100%',
-    width: '100%',
+    height: '50vh',
+    width: '70vw',
     boxSizing: 'border-box',
     borderRadius: "10px",
     fontFamily: '"Dank Mono", "Fira Code", monospace',
@@ -16,10 +16,16 @@ const styles = {
   }
 }
 
-class EditorRenderedHome extends Component {
-  state = { code: this.props.articles[0].fields.details};
+class EditorRendered extends Component {
+  state = { code: this.props.articles[0].fields.details}
 
- 
+  onValueChange = code => {
+    this.setState({ code })
+    
+  }
+  /* componentDidUpdate() {
+    this.props.setCodeValue(this.state.code)
+  } */
 
   highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
@@ -47,4 +53,4 @@ class EditorRenderedHome extends Component {
     )
   }
 }
-export default EditorRenderedHome
+export default EditorRendered

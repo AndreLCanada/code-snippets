@@ -1,6 +1,6 @@
 .button {
   box-sizing: border-box;
-  line-height: 80px;
+  line-height: 50px;
   letter-spacing: 3px;
   font-size: 1.2rem;
   text-align: center;
@@ -8,7 +8,7 @@
   color: rgb(21, 14, 14);
   cursor: pointer;
   margin: 0px 24px;
-  height: 80px;
+  height: 50px;
   border-color: #f2f2f2;
   border-style: solid;
   text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
@@ -35,6 +35,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 95vw;
+  box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+  border-radius: 10px;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
 }
 
 .titleDiv {
@@ -48,12 +53,6 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-}
-
-.description {
-  width: 45vw;
-  box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
-
 }
 
 .editor {
@@ -78,15 +77,24 @@
 
   .label {
     margin: 12px;
+
+    text-align: center;
     font-size: 1.4rem;  
 
   }
 
   .input {
     margin: 18px;
-    height: 30px;
+    width: 25vw;
     font-size: 1rem;
-    width: 20vw;  
+    text-align: center;
     box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+  }
 
-    }
+  .description {
+  margin: 18px;
+  font-size: 1rem;
+  width: 45vw;
+  text-align: center;
+  box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+ }
