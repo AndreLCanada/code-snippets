@@ -1,26 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import { server } from '../../config'
-import ArticleList from '../../components/ArticleList';
 import Airtable from 'airtable';
 import EditorRendered from './components/Editor';
 import createStyles from '../../styles/Create.module.css';
-import { base } from '../api/articles';
+
 
 
 
 export default function Create({ articles }) {
-  const [postBody, setPostBody] = React.useState("");
+  const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY}).base(process.env.NEXT_PUBLIC_DB_BASE);
 
   const form = useRef(null);
   const [codeValue, setCodeValue] = useState();
 
     const handleSubmit = () => {
-   //title
-      console.log(form.current[0].value)
-    //description
-      console.log(form.current[1].value) 
-      console.log(form.details)
+   
 
       base('code').create([
         {
@@ -82,13 +77,31 @@ export default function Create({ articles }) {
 };
 
 
- export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
-  const articles = await res.json()
+export async function getStaticProps() {
+  const airtable = new Airtable({
+    apiKey: process.env.NEXT_PUBLIC_DB_KEY,
+  });
 
+  const records = await airtable
+    .base(process.env.NEXT_PUBLIC_DB_BASE)('code')
+    .select({
+      fields: ['Title', 'details', 'description', 'type'],
+    })
+    .all();
+
+  const articles = records.map((product) => {
     return {
-      props: {
-        articles,
-      },
-    }
-} 
+      Title: product.get('Title') || null,
+      details: product.get('details') || null,
+      description: product.get('description') || null,
+      type: product.get('type') || null,
+    };
+  });
+
+
+  return {
+    props: {
+      articles,
+    },
+  };
+}
