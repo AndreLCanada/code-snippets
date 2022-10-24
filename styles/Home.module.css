@@ -119,6 +119,7 @@
   background: linear-gradient(to right, #4d4d4d 0, greenyellow 10%, #4d4d4d 20%);
   background-position: 0;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 4s alternate-reverse infinite ease-in-out;
   -webkit-text-size-adjust: none;
