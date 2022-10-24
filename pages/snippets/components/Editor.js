@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react'
-
 import Editor from 'react-simple-code-editor'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
@@ -17,7 +16,7 @@ const styles = {
 }
 
 class EditorRenderedSnippets extends Component {
-  state = { code: this.props.articles[0].fields.details}
+  state = { code: this.props.articles[0].details}
 
   onValueChange = code => {
     this.setState({ code })

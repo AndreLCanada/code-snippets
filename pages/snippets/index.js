@@ -3,7 +3,10 @@ import snippetStyles from '../../styles/Snippet.module.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import EditorRenderedSnippets from './components/Editor';
-import { server } from '../../config';
+import Airtable from 'airtable';
+
+export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
+
 const gallery = ({articles}) => {
   return (
     <div className={snippetStyles.div_three}>
@@ -13,8 +16,8 @@ const gallery = ({articles}) => {
           <EditorRenderedSnippets articles={articles} />
         </div>
           <div className={snippetStyles.info_container}>
-          <a className={snippetStyles.title} >{articles[4].fields.Title}</a>
-          <a className={snippetStyles.description} >{articles[4].fields.description}</a>
+          <a className={snippetStyles.title} >{articles[4].Title}</a>
+          <a className={snippetStyles.description} >{articles[4].description}</a>
           </div>
           <ArrowForwardIosIcon sx={{ fill: !'inherit', fontSize: "4vw",}}/>
       
@@ -25,13 +28,30 @@ const gallery = ({articles}) => {
 export default gallery
 
 
-export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
-  const articles = await res.json()
+export async function getStaticProps() {
+  const airtable = new Airtable({
+    apiKey: process.env.NEXT_PUBLIC_DB_KEY,
+  });
 
+  const records = await airtable
+    .base(process.env.NEXT_PUBLIC_DB_BASE)('code')
+    .select({
+      fields: ['Title', 'details', 'description', 'type'],
+    })
+    .all();
+
+  const articles = records.map((product) => {
     return {
-      props: {
-        articles,
-      },
-    }
-} 
+      Title: product.get('Title') || null,
+      details: product.get('details') || null,
+      description: product.get('description') || null,
+      type: product.get('type') || null,
+    };
+  });
+
+  return {
+    props: {
+      articles,
+    },
+  };
+}

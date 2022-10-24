@@ -17,7 +17,7 @@ const styles = {
 }
 
 class EditorRendered extends Component {
-  state = { code: this.props.articles[0].fields.details}
+  state = { code: this.props.articles[0].details}
 
   onValueChange = code => {
     this.setState({ code })

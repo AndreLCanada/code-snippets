@@ -11,13 +11,13 @@ const Header = () => {
       </h1>
       
       <p className={headerStyles.description} > every line you need, all-in-one place</p>
-      <style jsx>
+      {/* <style jsx>
         {`
           .title {
           color: ${x > 3 ? 'red' : 'blue'}
         }
         `}
-      </style>
+      </style> */}
     </div>
   )
 }
