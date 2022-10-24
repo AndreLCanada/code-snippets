@@ -83,7 +83,7 @@ export default function Create({ articles }) {
 };
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const airtable = new Airtable({
     apiKey: process.env.NEXT_PUBLIC_DB_KEY,
   });
