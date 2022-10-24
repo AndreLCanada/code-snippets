@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import { server } from '../../config'
 import Airtable from 'airtable';
-import EditorRendered from './components/Editor';
+import EditorRendered from '../../components/EditorCreate';
 import createStyles from '../../styles/Create.module.css';
 
 
