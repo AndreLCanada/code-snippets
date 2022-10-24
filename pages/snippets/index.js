@@ -2,7 +2,7 @@ import React from 'react'
 import snippetStyles from '../../styles/Snippet.module.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import EditorRenderedSnippets from './components/Editor';
+import EditorRenderedSnippets from '../../components/EditorSnippets';
 import Airtable from 'airtable';
 
 export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
