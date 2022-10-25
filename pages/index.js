@@ -29,7 +29,7 @@ export default function Home({ articles, arrayLength }) {
   }
 
   const handleForwardClick = () => {
-    arrayLength - 1 > indexOfCode  && setIndexOfCode(indexOfCode + 1);
+    arrayLength > indexOfCode  && setIndexOfCode(indexOfCode + 1);
   }
 
   const handleBackwardClick = () => {
@@ -49,7 +49,7 @@ export default function Home({ articles, arrayLength }) {
     <div className={homeStyles.container}>
       <div className={homeStyles.div_container}>
         <div className={homeStyles.div_one}>
-          <a clasName={homeStyles.btn_shine} target="_blank">codeSnippets: <br></br>{articles ? articles.length : null}</a>
+          <a className={homeStyles.btn_shine} target="_blank">codeSnippets: <br></br>{articles ? articles.length : null}</a>
         </div>
         
         <div className={homeStyles.div_two}>

@@ -52,7 +52,7 @@ export default function Create({ articles }) {
       form.details = codeValue
     }, [codeValue])
 
-    useEffect(() => {}, [toggle])
+    
    return (
     <div >
     <Head>
@@ -71,7 +71,7 @@ export default function Create({ articles }) {
         </div>
       </form>
      <div className={createStyles.editor}>
-       <EditorRendered articles={articles} />
+       <EditorRendered articles={articles} setCodeValue={setCodeValue}/>
     </div>
     <div className={createStyles.buttons}>
       <button className={createStyles.button} type="button" onClick={handleSubmit}>Save</button>

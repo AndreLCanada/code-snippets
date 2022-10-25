@@ -12,7 +12,7 @@ const gallery = ({articles, arrayLength}) => {
   const [indexOfCode, setIndexOfCode] = useState(1) 
 
   const handleForwardClick = () => {
-    indexOfCode < arrayLength  - 1  && setIndexOfCode(indexOfCode + 1);
+    indexOfCode < arrayLength  && setIndexOfCode(indexOfCode + 1);
   
   }
 
