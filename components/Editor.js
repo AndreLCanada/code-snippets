@@ -1,4 +1,5 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment, Component, useConext } from 'react'
+
 import Editor from 'react-simple-code-editor'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
@@ -16,7 +17,7 @@ const styles = {
 }
 
 class EditorRenderedHome extends Component {
-  state = {code: this.props.articles[0].details};
+  
 
  
 
@@ -37,7 +38,7 @@ class EditorRenderedHome extends Component {
   render() {
     return (
       <Editor
-        value={this.state.code}
+        value={this.props.articles[this.props.indexOfCode].details}
         onValueChange={this.onValueChange}
         highlight={this.highlight}
         padding={10}
