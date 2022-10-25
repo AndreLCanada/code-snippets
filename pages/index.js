@@ -64,7 +64,7 @@ export default function Home({ articles, arrayLength }) {
         </div>
       </div>
       <div className={homeStyles.div_three}>
-          <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
         <div className={homeStyles.editor}>
           <EditorRenderedHome indexOfCode={indexOfCode} articles={articles} /> 
         </div>
@@ -72,7 +72,7 @@ export default function Home({ articles, arrayLength }) {
           <a className={homeStyles.title} >{articles[indexOfCode].Title}</a>
           <a className={homeStyles.description}> {articles[indexOfCode].description}</a>
           </div>
-          <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
       </div>
     </div>
     </div>
