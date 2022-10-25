@@ -23,7 +23,7 @@ const gallery = ({articles, arrayLength}) => {
   return (
     <div className={snippetStyles.div_three}>
         
-          <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
         <div className={snippetStyles.editor}>
           <EditorRenderedSnippets articles={articles} indexOfCode={indexOfCode}/>
         </div>
@@ -31,7 +31,7 @@ const gallery = ({articles, arrayLength}) => {
           <a className={snippetStyles.title} >{articles[indexOfCode].Title}</a>
           <a className={snippetStyles.description} >{articles[indexOfCode].description}</a>
           </div>
-          <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
       
     </div>
   )
