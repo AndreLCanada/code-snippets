@@ -7,12 +7,12 @@ import Airtable from 'airtable';
 
 export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
 
-const gallery = ({articles}) => {
+const gallery = ({articles, arrayLength}) => {
 
   const [indexOfCode, setIndexOfCode] = useState(1) 
 
   const handleForwardClick = () => {
-    indexOfCode < articles.length - 1 && setIndexOfCode(indexOfCode + 1);
+    indexOfCode < arrayLength  - 1  && setIndexOfCode(indexOfCode + 1);
   
   }
 
@@ -60,10 +60,11 @@ export async function getServerSideProps() {
       type: product.get('type') || null,
     };
   });
-
+    const arrayLength = articles.length - 1;
   return {
     props: {
       articles,
+      arrayLength,
     },
   };
 }
