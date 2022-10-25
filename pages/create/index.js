@@ -50,6 +50,8 @@ export default function Create({ articles }) {
 
     useEffect(() => {
       form.details = codeValue
+      console.log("Form received Code Snippet")
+      console.log(form.details)
     }, [codeValue])
 
     
