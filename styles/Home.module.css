@@ -192,6 +192,16 @@
   padding-bottom: 7vw;
 }
 
+@media screen and (max-width: 612px) {
+  .div_two:hover {
+    padding-bottom: 0vw;
+  }
+
+  .div-two {
+    margin-top: -2vw;
+  }
+}
+
 .dropdown {
   display: inline-block;
   position: relative;
