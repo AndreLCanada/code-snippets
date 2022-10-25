@@ -10,10 +10,10 @@ export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base
 const gallery = ({articles}) => {
 
   const [indexOfCode, setIndexOfCode] = useState(1) 
-  
+
   const handleForwardClick = () => {
     indexOfCode < articles.length - 1 && setIndexOfCode(indexOfCode + 1);
-    console.log(indexOfCode)
+  
   }
 
   const handleBackwardClick = () => {
@@ -28,8 +28,8 @@ const gallery = ({articles}) => {
           <EditorRenderedSnippets articles={articles} indexOfCode={indexOfCode}/>
         </div>
           <div className={snippetStyles.info_container}>
-          <a className={snippetStyles.title} >{articles[4].Title}</a>
-          <a className={snippetStyles.description} >{articles[4].description}</a>
+          <a className={snippetStyles.title} >{articles[indexOfCode].Title}</a>
+          <a className={snippetStyles.description} >{articles[indexOfCode].description}</a>
           </div>
           <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
       

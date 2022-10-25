@@ -51,7 +51,7 @@ export default function Home({ articles }) {
         <div className={homeStyles.div_one}>
           <a clasName={homeStyles.btn_shine} target="_blank">codeSnippets: <br></br>{articles ? articles.length : null}</a>
         </div>
-        <script>{console.log(articles)}</script>
+        
         <div className={homeStyles.div_two}>
           <div className={homeStyles.dropdown}>
             <button className={homeStyles.dropdown}>New Snippet</button>
