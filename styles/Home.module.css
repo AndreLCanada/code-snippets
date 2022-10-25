@@ -79,11 +79,12 @@
 .title {
   display: flex;
   margin: 1vw;
-  padding: 1vw;
+  padding: 1.5vw;
   width: 28vw;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 912px) {
@@ -97,14 +98,14 @@
 .description {
   display: flex;
   margin: 1vw;
-  padding: 1vw;
+  padding: 1.5vw;
   width: 28vw;
   height: 100%;
   font-size: .9rem;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
-
+  border-radius: 10px;
   }
 
   @media screen and (max-width: 912px) {
@@ -198,6 +199,7 @@
   justify-self: center;
   width: 28vw;
   height: 4vw;
+  border-radius: 10px;
 }
 
 
@@ -223,6 +225,7 @@
   color: inherit;
   padding: 5px;
   text-decoration: none;
+  border-radius: 10px;
 }
 .dropdown_content a:hover {
   color: inherit;
