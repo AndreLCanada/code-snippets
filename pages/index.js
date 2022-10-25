@@ -1,19 +1,21 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, createContext, useContext} from 'react'
 import Head from 'next/head'
 import Airtable from 'airtable';
 import EditorRenderedHome from '../components/Editor';
 import homeStyles from '../styles/Home.module.css'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ReactDOM from "react-dom/client";
 
-
+const UserContext = createContext()
+ 
 
 export default function Home({ articles }) {
-  const [postBody, setPostBody] = useState("");
+  const [toggle, setToggle] = useState(0);
   const [typeOfCode, setTypeOfCode] = useState(2)
-  const [indexOfCode, setIndexOfCode] = useState(3)
+  const [indexOfCode, setIndexOfCode] = useState(1) 
 
-
+ 
   const handleComponentClick = () => {
       setTypeOfCode(2);
   }
@@ -27,14 +29,14 @@ export default function Home({ articles }) {
   }
 
   const handleForwardClick = () => {
-    setIndexOfCode((currentIndex) => currentIndex + 1);
-
+    indexOfCode < articles.length - 1 && setIndexOfCode(indexOfCode + 1);
   }
 
   const handleBackwardClick = () => {
-    setIndexOfCode((currentIndex) => currentIndex - 1);
+    indexOfCode > 0 && setIndexOfCode(indexOfCode - 1);
   }
 
+  
   
 
   return (
@@ -47,12 +49,13 @@ export default function Home({ articles }) {
     <div className={homeStyles.container}>
       <div className={homeStyles.div_container}>
         <div className={homeStyles.div_one}>
-          <a class={homeStyles.btn_shine} target="_blank">codeSnippets: <br></br>{articles ? articles.length : null}</a>
+          <a clasName={homeStyles.btn_shine} target="_blank">codeSnippets: <br></br>{articles ? articles.length : null}</a>
         </div>
+        <script>{console.log(articles)}</script>
         <div className={homeStyles.div_two}>
-          <div class={homeStyles.dropdown}>
-            <button class={homeStyles.dropdown}>New Snippet</button>
-            <div class={homeStyles.dropdown_content}>
+          <div className={homeStyles.dropdown}>
+            <button className={homeStyles.dropdown}>New Snippet</button>
+            <div className={homeStyles.dropdown_content}>
               <a onClick={handleComponentClick} >Component</a>
               <a onClick={handleFunctionClick}  >Function</a>
               <a onClick={handleClassClick}  >Class</a>
@@ -63,19 +66,19 @@ export default function Home({ articles }) {
       <div className={homeStyles.div_three}>
           <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
         <div className={homeStyles.editor}>
-          { articles ? <EditorRenderedHome indexOfCode={indexOfCode} articles={articles} /> : null}
+          <EditorRenderedHome indexOfCode={indexOfCode} articles={articles} /> 
         </div>
           <div className={homeStyles.info_container}>
-          <a className={homeStyles.title} >{articles ? articles[4].Title : null}</a>
-          <a className={homeStyles.description} >{articles ? articles[4].description : null}</a>
+          <a className={homeStyles.title} >{articles[indexOfCode].Title}</a>
+          <a className={homeStyles.description}> {articles[indexOfCode].description}</a>
           </div>
           <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
       </div>
     </div>
     </div>
-
   
   );
+  
 };
 
 
@@ -88,8 +91,7 @@ export async function getServerSideProps() {
     .base(process.env.NEXT_PUBLIC_DB_BASE)('code')
     .select({
       fields: ['Title', 'details', 'description', 'type'],
-    })
-    .all();
+    }).all();
 
   const articles = records.map((product) => {
     return {
@@ -106,3 +108,4 @@ export async function getServerSideProps() {
     },
   };
 }
+

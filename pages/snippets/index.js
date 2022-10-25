@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import snippetStyles from '../../styles/Snippet.module.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -8,18 +8,30 @@ import Airtable from 'airtable';
 export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
 
 const gallery = ({articles}) => {
+
+  const [indexOfCode, setIndexOfCode] = useState(1) 
+  
+  const handleForwardClick = () => {
+    indexOfCode < articles.length - 1 && setIndexOfCode(indexOfCode + 1);
+    console.log(indexOfCode)
+  }
+
+  const handleBackwardClick = () => {
+    indexOfCode > 0 && setIndexOfCode(indexOfCode - 1);
+  }
+
   return (
     <div className={snippetStyles.div_three}>
         
-          <ArrowBackIosIcon sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
         <div className={snippetStyles.editor}>
-          <EditorRenderedSnippets articles={articles} />
+          <EditorRenderedSnippets articles={articles} indexOfCode={indexOfCode}/>
         </div>
           <div className={snippetStyles.info_container}>
           <a className={snippetStyles.title} >{articles[4].Title}</a>
           <a className={snippetStyles.description} >{articles[4].description}</a>
           </div>
-          <ArrowForwardIosIcon sx={{ fill: !'inherit', fontSize: "4vw",}}/>
+          <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "4vw",}}/>
       
     </div>
   )
