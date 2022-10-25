@@ -23,9 +23,9 @@ class EditorRendered extends Component {
     this.setState({ code })
     
   }
-  /* componentDidUpdate() {
+  componentDidUpdate() {
     this.props.setCodeValue(this.state.code)
-  } */
+  } 
 
   highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
