@@ -40,7 +40,7 @@ export default function Home({ articles, arrayLength }) {
   
 
   return (
-    <div>
+    <div className={homeStyles.centerContainer}>
     
     <Head>
        <title>codeSnippets</title>

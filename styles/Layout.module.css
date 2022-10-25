@@ -1,5 +1,9 @@
 .container {
   padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
 }
 
 .main {
@@ -9,6 +13,8 @@
   flex-direction: column;
   justify-content: center;
   align-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header {
