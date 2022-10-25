@@ -24,3 +24,8 @@ a {
     background: black;
   }
 }
+
+.css-lmmly7-MuiSvgIcon-root {
+  display: absolute;
+  right: 2vw;
+}

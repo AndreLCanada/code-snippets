@@ -7,7 +7,8 @@ import theme from 'prism-react-renderer/themes/nightOwl'
 
 const styles = {
   root: {
-    height: '50vh',
+    height: '100%',
+    margin: "1vw",
     width: '70vw',
     boxSizing: 'border-box',
     borderRadius: "10px",
