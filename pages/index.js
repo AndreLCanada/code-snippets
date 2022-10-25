@@ -10,7 +10,7 @@ import ReactDOM from "react-dom/client";
 const UserContext = createContext()
  
 
-export default function Home({ articles }) {
+export default function Home({ articles, arrayLength }) {
   const [toggle, setToggle] = useState(0);
   const [typeOfCode, setTypeOfCode] = useState(2)
   const [indexOfCode, setIndexOfCode] = useState(1) 
@@ -29,7 +29,7 @@ export default function Home({ articles }) {
   }
 
   const handleForwardClick = () => {
-    indexOfCode < articles.length - 1 && setIndexOfCode(indexOfCode + 1);
+    arrayLength - 1 > indexOfCode  && setIndexOfCode(indexOfCode + 1);
   }
 
   const handleBackwardClick = () => {
@@ -101,10 +101,11 @@ export async function getServerSideProps() {
       type: product.get('type') || null,
     };
   });
-
+  const arrayLength = articles.length - 1;
   return {
     props: {
       articles,
+      arrayLength,
     },
   };
 }
