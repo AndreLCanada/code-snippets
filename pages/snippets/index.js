@@ -1,31 +1,53 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import snippetStyles from '../../styles/Snippet.module.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import EditorRenderedSnippets from '../../components/EditorSnippets';
 import Airtable from 'airtable';
+import SearchIcon from '@mui/icons-material/Search';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 export const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY }).base( process.env.NEXT_PUBLIC_DB_BASE );
 
-const gallery = ({articles, arrayLength}) => {
-
+const gallery = ({articles}) => {
+  const [codeArray, setCodeArray] = useState(articles)
   const [indexOfCode, setIndexOfCode] = useState(1) 
-
+  let codeArrayLength = codeArray.length - 1;
+  /* const searchQuery = useRef(""); */
   const handleForwardClick = () => {
-    indexOfCode < arrayLength  && setIndexOfCode(indexOfCode + 1);
-  
+    indexOfCode < codeArrayLength && setIndexOfCode(indexOfCode + 1);
+  console.log("Index of code:")
+  console.log(indexOfCode)
+  console.log("codeArrayLength:")
+  console.log(codeArrayLength)
   }
 
   const handleBackwardClick = () => {
     indexOfCode > 0 && setIndexOfCode(indexOfCode - 1);
+    console.log("CodeArray:")
+    console.log(codeArray)
   }
 
+  const handleSearchChange = (e) => {
+   e.nativeEvent.srcElement.value 
+    ? setCodeArray(articles.filter(snippet => snippet.Title.includes(e.nativeEvent.srcElement.value) || snippet.description.includes(e.nativeEvent.srcElement.value)))
+    : setCodeArray(articles)
+    console.log(codeArray)
+  }
+
+  
+  
   return (
+    <>
+    <div className={snippetStyles.searchContainer}>
+      <SearchIcon sx={{ fill: !'inherit', fontSize: "1.3rem", position: "relative", zIndex: 3, transform: "translateX(26px) translateY(5px)", }}/>
+      <input className={snippetStyles.input} type="text" rows="1"  id="title" onChange={handleSearchChange}></input>
+    </div>
     <div className={snippetStyles.div_three}>
         
           <ArrowBackIosIcon onClick={handleBackwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
         <div className={snippetStyles.editor}>
-          <EditorRenderedSnippets articles={articles} indexOfCode={indexOfCode}/>
+          <EditorRenderedSnippets articles={codeArray} indexOfCode={indexOfCode}/>
         </div>
           <div className={snippetStyles.info_container}>
           <a className={snippetStyles.title} >{articles[indexOfCode].Title}</a>
@@ -34,6 +56,7 @@ const gallery = ({articles, arrayLength}) => {
           <ArrowForwardIosIcon onClick={handleForwardClick} sx={{ fill: !'inherit', fontSize: "6vw",}}/>
       
     </div>
+    </>
   )
 }
 
