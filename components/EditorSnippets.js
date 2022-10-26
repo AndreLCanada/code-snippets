@@ -16,11 +16,11 @@ const styles = {
   }
 }
 
+
 class EditorRenderedSnippets extends Component {
 
 
   onValueChange = code => {
-    this.setState({ code })
     
   }
 /*   componentDidUpdate() {
@@ -43,13 +43,15 @@ class EditorRenderedSnippets extends Component {
 
   render() {
     return (
-      <Editor
-        value={this.props.articles[this.props.indexOfCode].details}
+      <>
+      {this.props.articles[this.props.indexOfCode] && <Editor
+        value={this.props.articles[this.props.indexOfCode] && this.props.articles[this.props.indexOfCode].details}
         onValueChange={this.onValueChange}
         highlight={this.highlight}
         padding={10}
         style={styles.root}
-      />
+      />}
+      </>
     )
   }
 }

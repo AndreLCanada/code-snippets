@@ -92,3 +92,23 @@
       margin-bottom: 3vh;
     }
   }
+
+  .input {
+    margin-top: 2.5vw;
+    padding: 1vw;
+    width: 75vw;
+    font-size: 1rem;
+    height: 1rem;
+    text-align: center;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+  }
+
+  
+
+  .searchContainer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
