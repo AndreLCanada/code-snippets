@@ -140,6 +140,8 @@
   text-align: center;
   white-space: nowrap;
   font-weight: bold;
+  font-size: 4.5vw;
+
 }
 @-moz-keyframes shine {
   0% {
@@ -238,7 +240,7 @@
   }
   
   .dropdown button {
-    margin-left: 16px;
+    margin-left: 18px;
   }
 
   .dropdown_content {
@@ -317,7 +319,7 @@
 
 @media screen and (max-width: 612px) {
   .typeCode {
-    transform: translateY(26px);
+    transform: translateY(30px);
     font-size: 4.5vw;
   }
 
