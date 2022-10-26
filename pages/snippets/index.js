@@ -13,26 +13,18 @@ const gallery = ({articles}) => {
   const [codeArray, setCodeArray] = useState(articles)
   const [indexOfCode, setIndexOfCode] = useState(1) 
   let codeArrayLength = codeArray.length - 1;
-  /* const searchQuery = useRef(""); */
   const handleForwardClick = () => {
     indexOfCode < codeArrayLength && setIndexOfCode(indexOfCode + 1);
-  console.log("Index of code:")
-  console.log(indexOfCode)
-  console.log("codeArrayLength:")
-  console.log(codeArrayLength)
   }
 
   const handleBackwardClick = () => {
     indexOfCode > 0 && setIndexOfCode(indexOfCode - 1);
-    console.log("CodeArray:")
-    console.log(codeArray)
   }
 
   const handleSearchChange = (e) => {
    e.nativeEvent.srcElement.value 
     ? setCodeArray(articles.filter(snippet => snippet.Title.includes(e.nativeEvent.srcElement.value) || snippet.description.includes(e.nativeEvent.srcElement.value)))
     : setCodeArray(articles)
-    console.log(codeArray)
   }
 
   
