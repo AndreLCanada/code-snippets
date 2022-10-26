@@ -125,13 +125,17 @@
  .success {
   margin: 5vw;
   padding: 7vw;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color:greenyellow;
   width: 55vw;
   text-align: center;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
   position: absolute;
-  bottom: 5vh;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  background-color: #001626;
+  border-radius: 10px;
  }
 
  @media screen and (max-width: 712px) {
