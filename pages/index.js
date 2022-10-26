@@ -1,4 +1,4 @@
-import React, {useEffect, useState, createContext, useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import Head from 'next/head'
 import Airtable from 'airtable';
 import EditorRenderedHome from '../components/Editor';
@@ -6,27 +6,27 @@ import homeStyles from '../styles/Home.module.css'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ReactDOM from "react-dom/client";
-
-const UserContext = createContext()
- 
+import { Context } from '../components/Layout';
+ import Link from 'next/link';
 
 export default function Home({ articles, arrayLength }) {
   const [toggle, setToggle] = useState(0);
-  const [typeOfCode, setTypeOfCode] = useState(2)
   const [indexOfCode, setIndexOfCode] = useState(1) 
-
+  const contextType = Context
+  const value = articles[1].details
+  const { typeOfCode, loadCode } = useContext(Context)
  
+  
+
   const handleComponentClick = () => {
-      setTypeOfCode(2);
+      loadCode("Component")
   }
 
   const handleFunctionClick = () => {
-    setTypeOfCode(0);
-  }
+    loadCode("Function")  }
 
   const handleClassClick = () => {
-    setTypeOfCode(1);
-  }
+    loadCode("Class")  }
 
   const handleForwardClick = () => {
     arrayLength > indexOfCode  && setIndexOfCode(indexOfCode + 1);
@@ -37,7 +37,6 @@ export default function Home({ articles, arrayLength }) {
   }
 
   
-  
 
   return (
     <div className={homeStyles.centerContainer}>
@@ -46,6 +45,7 @@ export default function Home({ articles, arrayLength }) {
        <title>codeSnippets</title>
        <meta name="keywords" content="web development, programming" />
     </Head>
+  
     <div className={homeStyles.container}>
       <div className={homeStyles.div_container}>
         <div className={homeStyles.div_one}>
@@ -54,13 +54,15 @@ export default function Home({ articles, arrayLength }) {
         
         <div className={homeStyles.div_two}>
           <div className={homeStyles.dropdown}>
-            <button className={homeStyles.dropdown}>New Snippet</button>
+            <button className={homeStyles.dropdown}>Select Type:</button>
             <div className={homeStyles.dropdown_content}>
-              <a onClick={handleComponentClick} >Component</a>
+             <a onClick={handleComponentClick} >Component</a>
               <a onClick={handleFunctionClick}  >Function</a>
               <a onClick={handleClassClick}  >Class</a>
             </div>
           </div>
+          <div className={homeStyles.typeCode}>{typeOfCode}</div>
+          <Link href='/create'><div className={homeStyles.create_button}> Create</div></Link>
         </div>
       </div>
       <div className={homeStyles.div_three}>
