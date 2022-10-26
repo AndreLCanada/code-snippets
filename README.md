@@ -1,12 +1,12 @@
-### Running codeSnippets on your own Deployment:
+## Running codeSnippets on your own Deployment:
 
-## Clone Repository and Create Repo on Github.
-## Create Airtable account
-## Create Airtable base
-## Create Vercel Account
-## Deploy to Vercel with proper Environment Variables
-## Connect your own domain (optional)
-## Type, Save, Search, Enjoy!
+### Clone Repository and Create Repo on Github.
+### Create Airtable account
+### Create Airtable base
+### Create Vercel Account
+### Deploy to Vercel with proper Environment Variables
+### Connect your own domain (optional)
+### Type, Save, Search, Enjoy!
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
