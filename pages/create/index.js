@@ -1,20 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import Head from 'next/head'
 import { server } from '../../config'
 import Airtable from 'airtable';
 import EditorRendered from '../../components/EditorCreate';
 import createStyles from '../../styles/Create.module.css';
-
+import { Context } from '../../components/Layout';
+import { CommentsDisabledOutlined } from '@mui/icons-material';
+import { ListItem } from '@mui/material';
 
 
 
 export default function Create({ articles }) {
   const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY}).base(process.env.NEXT_PUBLIC_DB_BASE);
-
+ let preload = ""
   const form = useRef(null);
   const [codeValue, setCodeValue] = useState();
   const [toggle, setToggle] = useState();
+  const contextType = Context
+  const { typeOfCode, loadCode } = useContext(Context)
 
+  const codeFile = articles.filter(item => item.Title === typeOfCode)
+  preload = codeFile[0].details
     const handleSubmit = () => {
    
       // Save Code Snippet
@@ -23,7 +29,7 @@ export default function Create({ articles }) {
           "fields": {
             "Title": form.current[0].value,
             "description": form.current[1].value,
-            "details": form.details,
+            "details": form.details ? form.details : articles[0].details,
             "type": [
               "function"
             ]
@@ -50,12 +56,14 @@ export default function Create({ articles }) {
 
     useEffect(() => {
       form.details = codeValue
-      console.log("Form received Code Snippet")
-      console.log(form.details)
+      
     }, [codeValue])
 
     
-   return (
+
+    
+  
+    return (
     <div >
     <Head>
        <title>codeSnippets</title>
@@ -73,7 +81,7 @@ export default function Create({ articles }) {
         </div>
       </form>
      <div className={createStyles.editor}>
-       <EditorRendered articles={articles} setCodeValue={setCodeValue}/>
+       <EditorRendered articles={articles} preloadCode={preload} setCodeValue={setCodeValue}/>
     </div>
     <div className={createStyles.buttons}>
       <button className={createStyles.button} type="button" onClick={handleSubmit}>Save</button>
@@ -81,7 +89,8 @@ export default function Create({ articles }) {
     </div> 
     { toggle ? <div className={createStyles.success}>Snippet Saved!</div> : null} 
   </div>
-</div>);
+</div>)
+
 };
 
 

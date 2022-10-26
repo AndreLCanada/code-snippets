@@ -4,6 +4,7 @@ import Editor from 'react-simple-code-editor'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
 
+import { Context } from '../components/Layout';
 
 const styles = {
   root: {
@@ -18,7 +19,7 @@ const styles = {
 }
 
 class EditorRendered extends Component {
-  state = { code: this.props.articles[0].details}
+  state = { code: this.props.preloadCode }
 
   onValueChange = code => {
     this.setState({ code })
@@ -27,6 +28,7 @@ class EditorRendered extends Component {
   componentDidUpdate() {
     this.props.setCodeValue(this.state.code)
   } 
+
 
   highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
@@ -44,13 +46,16 @@ class EditorRendered extends Component {
 
   render() {
     return (
-      <Editor
+      <>
+      
+       <Editor
         value={this.state.code}
         onValueChange={this.onValueChange}
         highlight={this.highlight}
         padding={10}
         style={styles.root}
       />
+      </>
     )
   }
 }
