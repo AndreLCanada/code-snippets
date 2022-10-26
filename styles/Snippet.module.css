@@ -91,6 +91,9 @@
       margin: 1vh 0vh;
       margin-bottom: 3vh;
     }
+    .input {
+      border: 2px solid #C0C0C0;
+    }
   }
 
   .input {
@@ -98,7 +101,7 @@
     padding: 1vw;
     width: 75vw;
     font-size: 1rem;
-    height: 1rem;
+    height: 2rem;
     text-align: center;
     border-style: none;
     border-radius: 10px;
