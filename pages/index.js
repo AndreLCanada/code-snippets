@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useContext} from 'react'
-import Head from 'next/head'
 import Airtable from 'airtable';
 import EditorRenderedHome from '../components/Editor';
 import homeStyles from '../styles/Home.module.css'
@@ -41,10 +40,7 @@ export default function Home({ articles, arrayLength }) {
   return (
     <div className={homeStyles.centerContainer}>
     
-    <Head>
-       <title>codeSnippets</title>
-       <meta name="keywords" content="web development, programming" />
-    </Head>
+    
   
     <div className={homeStyles.container}>
       <div className={homeStyles.div_container}>

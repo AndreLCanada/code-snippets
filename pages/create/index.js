@@ -12,16 +12,16 @@ import { ListItem } from '@mui/material';
 
 export default function Create({ articles }) {
   const base = new Airtable({apiKey: process.env.NEXT_PUBLIC_DB_KEY}).base(process.env.NEXT_PUBLIC_DB_BASE);
- let preload = ""
+  let preload = ""
   const form = useRef(null);
   const [codeValue, setCodeValue] = useState();
   const [toggle, setToggle] = useState();
-  const contextType = Context
   const { typeOfCode, loadCode } = useContext(Context)
-
   const codeFile = articles.filter(item => item.Title === typeOfCode)
+  
   preload = codeFile[0].details
-    const handleSubmit = () => {
+
+  const handleSubmit = () => {
    
       // Save Code Snippet
       base('code').create([
@@ -29,7 +29,7 @@ export default function Create({ articles }) {
           "fields": {
             "Title": form.current[0].value,
             "description": form.current[1].value,
-            "details": form.details ? form.details : articles[0].details,
+            "details": form.details ? form.details : "[Uh oh, looks like you didn't save something new!]",
             "type": [
               "function"
             ]
@@ -56,10 +56,10 @@ export default function Create({ articles }) {
 
     useEffect(() => {
       form.details = codeValue
-      
     }, [codeValue])
 
-    
+   
+   
 
     
   
@@ -84,7 +84,7 @@ export default function Create({ articles }) {
        <EditorRendered articles={articles} preloadCode={preload} setCodeValue={setCodeValue}/>
     </div>
     <div className={createStyles.buttons}>
-      <button className={createStyles.button} type="button" onClick={handleSubmit}>Save</button>
+      <button className={createStyles.button} type="button" onClick={handleSubmit} >Save</button>
       <button className={createStyles.button} type="button" onClick={handleDiscard}>Discard</button>
     </div> 
     { toggle ? <div className={createStyles.success}>Snippet Saved!</div> : null} 
